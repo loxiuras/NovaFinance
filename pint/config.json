@@ -4,7 +4,12 @@
         "Laravel/laravel_phpdoc_alignment": false,
         "single_line_comment_style": false,
         "not_operator_with_successor_space": false,
-        "void_return": true
+        "void_return": true,
+        "explicit_string_variable": true,
+        "combine_consecutive_issets": true,
+        "combine_consecutive_unsets": true,
+        "concat_space": true,
+        "simplified_if_return": true
     },
     "exclude": []
 }
