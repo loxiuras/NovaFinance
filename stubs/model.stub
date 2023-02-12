@@ -11,5 +11,7 @@ class {{ class }} extends Model
 
     #### Relations ####
 
+    #### Attributes ####
+
     #### Functions ####
 }
