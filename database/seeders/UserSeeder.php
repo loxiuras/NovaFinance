@@ -12,20 +12,20 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::updateOrCreate([
-                'email' => 'super-admin@example.com',
-            ], [
-                'first_name' => 'Super',
-                'last_name' => 'Admin',
-                'email_verified_at' => '2023-01-01 00:00:00',
-                'password' => self::password,
-                'last_password_renewal_at' => '2023-01-02 00:00:00',
+            'email' => 'super-admin@example.com',
+        ], [
+            'first_name' => 'Super',
+            'last_name' => 'Admin',
+            'email_verified_at' => '2023-01-01 00:00:00',
+            'password' => self::password,
+            'last_password_renewal_at' => '2023-01-02 00:00:00',
         ]);
 
         for ($i = 1; $i <= 4; $i++) {
             $number = $this->createUserNumber($i);
 
             $user = User::updateOrCreate([
-                'email' => "user-$number@example.com",
+                'email' => "user-{$number}@example.com",
             ], [
                 'first_name' => 'User',
                 'last_name' => $number,
@@ -40,10 +40,14 @@ class UserSeeder extends Seeder
 
     private function createUserNumber(int $index): string
     {
-        if (strlen($index) === 3) return $index;
+        if (strlen($index) === 3) {
+            return $index;
+        }
 
-        if (strlen($index) === 2) return '0' . $index;
+        if (strlen($index) === 2) {
+            return '0'.$index;
+        }
 
-        return '00' . $index;
+        return '00'.$index;
     }
 }

@@ -13,7 +13,7 @@ class GroupSeeder extends Seeder
     {
         for ($i = 1; $i <= self::amountOfGroups; $i++) {
             Group::updateOrCreate([
-                'name' => 'Group ' . $i,
+                'name' => 'Group '.$i,
             ], []);
         }
     }
