@@ -28,5 +28,7 @@ class User extends Authenticatable
 
     #### Relations ####
 
+    #### Attributes ####
+
     #### Functions ####
 }
