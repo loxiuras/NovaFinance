@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -12,40 +11,39 @@ class UserSeeder extends Seeder
 
     public function run(): void
     {
-        $adminUsers = [
-            [
+        User::updateOrCreate([
+                'email' => 'super-admin@example.com',
+            ], [
                 'first_name' => 'Super',
                 'last_name' => 'Admin',
-                'email' => 'super-admin@example.com',
                 'email_verified_at' => '2023-01-01 00:00:00',
-                'password' => Hash::make(self::password),
+                'password' => self::password,
                 'last_password_renewal_at' => '2023-01-02 00:00:00',
-            ],
-        ];
+        ]);
 
-        $leadUsers = [
-            [
+        for ($i = 1; $i <= 4; $i++) {
+            $number = $this->createUserNumber($i);
+
+            $user = User::updateOrCreate([
+                'email' => "user-$number@example.com",
+            ], [
                 'first_name' => 'User',
-                'last_name' => '001',
-                'email' => 'user-001@example.com',
+                'last_name' => $number,
                 'email_verified_at' => '2023-01-01 00:00:00',
-                'password' => Hash::make(self::password),
+                'password' => self::password,
                 'last_password_renewal_at' => '2023-01-02 00:00:00',
-            ],
-            [
-                'first_name' => 'User',
-                'last_name' => '002',
-                'email' => 'user-002@example.com',
-                'email_verified_at' => '2023-01-02 00:00:00',
-                'password' => Hash::make(self::password),
-                'last_password_renewal_at' => '2023-01-03 00:00:00',
-            ],
-        ];
+            ]);
 
-        $users = [];
-        $users = array_merge($users, $adminUsers);
-        $users = array_merge($users, $leadUsers);
+            $user->groups()->attach([ceil($i / 2)]);
+        }
+    }
 
-        DB::table('users')->insert($users);
+    private function createUserNumber(int $index): string
+    {
+        if (strlen($index) === 3) return $index;
+
+        if (strlen($index) === 2) return '0' . $index;
+
+        return '00' . $index;
     }
 }

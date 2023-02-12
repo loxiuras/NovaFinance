@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -27,8 +30,18 @@ class User extends Authenticatable
     ];
 
     #### Relations ####
+    public function groups(): belongsToMany
+    {
+        return $this->belongsToMany(Group::class);
+    }
 
     #### Attributes ####
+    public function password(): Attribute
+    {
+        return Attribute::make(
+            set: fn ($value) => Hash::make($value),
+        );
+    }
 
     #### Functions ####
 }
