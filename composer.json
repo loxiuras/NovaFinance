@@ -33,6 +33,8 @@
         }
     },
     "scripts": {
+        "pint": "pint --config pint/config.json",
+        "pint-test": "pint --config pint/config.json --test",
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
