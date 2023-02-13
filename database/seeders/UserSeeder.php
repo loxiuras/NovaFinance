@@ -40,14 +40,6 @@ class UserSeeder extends Seeder
 
     private function createUserNumber(int $index): string
     {
-        if (strlen($index) === 3) {
-            return $index;
-        }
-
-        if (strlen($index) === 2) {
-            return '0'.$index;
-        }
-
-        return '00'.$index;
+        return str_pad($index, 3, '0', STR_PAD_LEFT);
     }
 }
