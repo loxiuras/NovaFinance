@@ -14,6 +14,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->foreignId('group_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('category_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->bigInteger('sequence')->default(0);
             $table->timestamps();
         });
     }

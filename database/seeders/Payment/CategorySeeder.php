@@ -54,6 +54,8 @@ class CategorySeeder extends Seeder
                 foreach (self::categories as $category => $items) {
                     $this->createCategory($group->id, $category, $items);
                 }
+
+                Category::updateSequence($group->id);
             }
         }
     }
