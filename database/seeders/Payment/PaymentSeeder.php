@@ -43,7 +43,7 @@ class PaymentSeeder extends Seeder
             'category_id' => 10, // Starbucks
             'title' => 'Coffee from Starbucks',
         ], [
-            'description' => '1x normal coffee',
+            'description' => '1x normal coffee.',
             'transaction_date' => now()->subDays(6),
             'transaction_type' => TransactionTypeEnum::Out->value,
             'transaction_currency' => TransactionCurrencyEnum::Euro->value,
@@ -54,9 +54,22 @@ class PaymentSeeder extends Seeder
             'group_id' => 1,
             'user_id' => 2,
             'category_id' => 19, // Credit-card
-            'title' => 'Monthly income',
+            'title' => 'Monthly expense',
         ], [
-            'description' => 'Salary',
+            'description' => 'Monthly expense for house.',
+            'transaction_date' => now()->subDays(9),
+            'transaction_type' => TransactionTypeEnum::Out->value,
+            'transaction_currency' => TransactionCurrencyEnum::Euro->value,
+            'transaction_amount' => 800.00,
+        ]);
+
+        Payment::updateOrCreate([
+            'group_id' => 1,
+            'user_id' => 2,
+            'category_id' => 27, // Credit-card
+            'title' => 'Salary',
+        ], [
+            'description' => 'Monthly income.',
             'transaction_date' => now()->subDays(10),
             'transaction_type' => TransactionTypeEnum::In->value,
             'transaction_currency' => TransactionCurrencyEnum::Euro->value,
