@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\Payment\TransactionCurrencyEnum;
+use App\Enums\Payment\TransactionTypeEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,10 +18,12 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('category_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->date('transaction_date');
-            $table->string('transaction_type'); /* TODO: Set transaction type enum; */
-            $table->string('transaction_currency'); /* TODO: Set transaction currency enum; */
-            $table->float('transaction_amount')->default(0);
+            $table->string('transaction_type')->default(TransactionTypeEnum::In->value);
+            $table->string('transaction_currency')->default(TransactionCurrencyEnum::Euro->value);
+            $table->float('transaction_amount')->default(0.00);
             $table->timestamps();
+
+            $table->index('transaction_date');
         });
     }
 

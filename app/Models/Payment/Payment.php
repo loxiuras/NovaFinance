@@ -2,6 +2,8 @@
 
 namespace App\Models\Payment;
 
+use App\Enums\Payment\TransactionCurrencyEnum;
+use App\Enums\Payment\TransactionTypeEnum;
 use App\Models\Group;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,6 +27,8 @@ class Payment extends Model
 
     protected $casts = [
         'transaction_date' => 'date',
+        'transaction_type' => TransactionTypeEnum::class,
+        'transaction_currency' => TransactionCurrencyEnum::class,
     ];
 
     #### Relations ####
