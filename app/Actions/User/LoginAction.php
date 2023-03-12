@@ -11,7 +11,7 @@ class LoginAction
 
     public function handle(LoginStoreRequest $request): bool
     {
-        $email    = $request->get('username');
+        $email = $request->get('username');
         $password = $request->get('password');
 
         if (!auth()->attempt(['email' => $email, 'password' => $password], $request->get('rememberMe', false))) {

@@ -2,6 +2,7 @@
 
 namespace App\Enums\User;
 
-enum UserBlockEmum: string {
+enum UserBlockEmum: string
+{
     case LOGIN = 'LOGIN';
 }

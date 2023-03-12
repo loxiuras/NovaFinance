@@ -2,6 +2,7 @@
 
 namespace App\Enums\Payment;
 
-enum TransactionCurrencyEnum: string {
+enum TransactionCurrencyEnum: string
+{
     case Euro = 'EURO';
 }

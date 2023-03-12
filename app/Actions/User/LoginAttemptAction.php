@@ -14,17 +14,17 @@ class LoginAttemptAction
     {
         $ipAddress = $_SERVER['REMOTE_ADDR'] ?? null;
 
-        $loginAttempt = UserBlocks::where('ip_address', $ipAddress)->firstOr(function() use ($ipAddress) {
+        $loginAttempt = UserBlocks::where('ip_address', $ipAddress)->firstOr(function () use ($ipAddress) {
             return UserBlocks::create([
-               'ip_address' => $ipAddress,
-               'type' => UserBlockEmum::LOGIN->value,
+                'ip_address' => $ipAddress,
+                'type' => UserBlockEmum::LOGIN->value,
             ]);
         });
 
         $newAttemptAmount = $loginAttempt->attempts + 1;
         $loginAttempt->update([
-           'attempts' => $newAttemptAmount,
-           'blocked' => $newAttemptAmount >= 3,
+            'attempts' => $newAttemptAmount,
+            'blocked' => $newAttemptAmount >= 3,
         ]);
     }
 }

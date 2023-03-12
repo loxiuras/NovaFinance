@@ -9,13 +9,13 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('user_blocks', function (Blueprint $table) {
+        Schema::create('user_blocks', function (Blueprint $table): void {
             $table->id();
             $table->ipAddress();
             $table->tinyInteger('attempts')->default(0);
             $table->boolean('blocked')->default(false);
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->enum('type',[UserBlockEmum::LOGIN->value])->nullable();
+            $table->enum('type', [UserBlockEmum::LOGIN->value])->nullable();
             $table->timestamps();
         });
     }

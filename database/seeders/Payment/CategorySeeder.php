@@ -60,7 +60,7 @@ class CategorySeeder extends Seeder
         }
     }
 
-    private function createCategory(int $groupId, string|int $category, array|string $items = null, int $categoryId = null)
+    private function createCategory(int $groupId, string|int $category, array|string $items = null, int $categoryId = null): void
     {
         $category = Category::updateOrCreate([
             'group_id' => $groupId,
