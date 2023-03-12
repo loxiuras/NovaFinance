@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\User\UserBlockEmum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,6 +15,7 @@ class UserBlocks extends Model
         'ip_address',
         'attempts',
         'blocked',
+        'type',
         'user_id',
     ];
 
@@ -34,7 +36,9 @@ class UserBlocks extends Model
     #### Functions ####
     public function hasBlockedLogin(): bool
     {
-        $loginAttempt = UserBlocks::where('ip_address', $_SERVER['REMOTE_ADDR'])->first();
+        $loginAttempt = UserBlocks::where('ip_address', $_SERVER['REMOTE_ADDR'])
+            ->where('type', UserBlockEmum::LOGIN->value)
+            ->first();
 
         return !empty($loginAttempt) && $loginAttempt->blocked;
     }
