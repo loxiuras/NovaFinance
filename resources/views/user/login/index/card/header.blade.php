@@ -4,8 +4,10 @@
             <div class="text-primary p-4">
                 <!-- TODO: Translate text; -->
 
-                <h5 class="text-primary">Welcome Back !</h5>
-                <p>Sign in to continue to Skote.</p>
+                @if(!$loginIsBlocked)
+                    <h5 class="text-primary">Welcome Back !</h5>
+                    <p>Sign in to continue to Skote.</p>
+                @endif
             </div>
         </div>
         <div class="col-5 align-self-end">

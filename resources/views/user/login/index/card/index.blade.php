@@ -2,6 +2,10 @@
 
     @include("user.login.index.card.header")
 
-    @include("user.login.index.card.body")
+    @if(!$loginIsBlocked)
+        @include("user.login.index.card.body")
+    @else
+        @include("user.login.index.card.blocked")
+    @endif
 
 </div>

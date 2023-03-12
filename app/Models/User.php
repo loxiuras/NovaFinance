@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,9 +31,14 @@ class User extends Authenticatable
     ];
 
     #### Relations ####
-    public function groups(): belongsToMany
+    public function groups(): BelongsToMany
     {
         return $this->belongsToMany(Group::class);
+    }
+
+    public function loginAttempts(): HasOne
+    {
+        return $this->HasOne(Group::class);
     }
 
     #### Attributes ####
@@ -44,4 +50,10 @@ class User extends Authenticatable
     }
 
     #### Functions ####
+    public function hasBlockedLogin(): bool
+    {
+        $loginAttempt = $this->loginAttempts();
+
+        return !empty($loginAttempt) && $loginAttempt->blocked;
+    }
 }
