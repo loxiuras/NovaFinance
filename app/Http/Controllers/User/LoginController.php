@@ -21,6 +21,10 @@ class LoginController extends Controller
 
     public function store(LoginStoreRequest $request)
     {
+        if ((new UserBlocks())->hasBlockedLogin()) {
+            return redirect()->route('login');
+        }
+
         $login = (new LoginAction())->make()->handle($request);
 
         if (!$login) {
