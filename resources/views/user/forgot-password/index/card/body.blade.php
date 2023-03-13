@@ -6,8 +6,8 @@
             @csrf
 
             <div class="mb-3">
-                <label for="username" class="form-label">E-mailaddress</label>
-                <input type="text" required name="email" class="form-control @error('email') border-danger @enderror" id="username" placeholder="Enter e-mailaddress">
+                <label for="email" class="form-label">E-mailaddress</label>
+                <input type="text" required name="email" class="form-control @error('email') border-danger @enderror" id="email" placeholder="Enter e-mailaddress">
 
                 @error('email')
                     <div class="invalid-feedback d-block">{{ $message }}</div>

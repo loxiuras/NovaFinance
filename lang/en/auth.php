@@ -18,4 +18,5 @@ return [
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
     'password-reset' => 'If the given e-mailaddress is known, we\'ve send you a reset e-mail. Don\'t forget too check your spam inbox.',
+    'password-reset-confirm' => 'Your password is successfully reset. Login to your account via the form above.',
 ];

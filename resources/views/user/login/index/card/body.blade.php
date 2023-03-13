@@ -43,6 +43,12 @@
                 </p>
             @enderror
 
+            @if (session('message'))
+                <p class="text-success text-sm mt-3 mb-3">
+                    {{ session('message') }}
+                </p>
+            @endif
+
             <div class="mt-4 text-center">
                 <!-- TODO: Setup redirect routes; -->
                 <a href="{{ route('forgot-password.index') }}" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>

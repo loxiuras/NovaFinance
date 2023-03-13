@@ -6,7 +6,7 @@
 
                 @if(!$loginIsBlocked)
                     <h5 class="text-primary">Welcome Back !</h5>
-                    <p>Sign in to continue to Skote.</p>
+                    <p>Sign in to NovaFinance.</p>
                 @endif
             </div>
         </div>

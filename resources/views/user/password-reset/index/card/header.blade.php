@@ -3,8 +3,8 @@
         <div class="col-7">
             <div class="text-primary p-4">
                 <!-- TODO: Translate text; -->
-                <h5 class="text-primary">Forgot password</h5>
-                <p>Request a password reset.</p>
+                <h5 class="text-primary">Password reset</h5>
+                <p>Create a strong new password.</p>
             </div>
         </div>
         <div class="col-5 align-self-end">
