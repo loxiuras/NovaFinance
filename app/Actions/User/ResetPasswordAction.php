@@ -2,9 +2,7 @@
 
 namespace App\Actions\User;
 
-use App\Http\Requests\User\ForgotPasswordStoreRequest;
 use App\Http\Requests\User\PasswordResetStoreRequest;
-use App\Models\PasswordReset;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Lorisleiva\Actions\Concerns\AsAction;
