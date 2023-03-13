@@ -31,6 +31,24 @@ namespace App\Models{
 	class Group extends \Eloquent {}
 }
 
+namespace App\Models{
+/**
+ * App\Models\PasswordReset
+ *
+ * @property string $email
+ * @property string $token
+ * @property string|null $created_at
+ * @property-read \App\Models\User|null $users
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset query()
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|PasswordReset whereToken($value)
+ */
+	class PasswordReset extends \Eloquent {}
+}
+
 namespace App\Models\Payment{
 /**
  * App\Models\Payment\Category
@@ -114,6 +132,7 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Group> $groups
  * @property-read int|null $groups_count
  * @property-read \App\Models\Group|null $loginAttempts
+ * @property-read \App\Models\PasswordReset|null $passwordReset
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -134,12 +153,14 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\UserLoginAttempt
+ * App\Models\UserBlocks
  *
  * @property int $id
  * @property string $ip_address
  * @property int $attempts
+ * @property bool $blocked
  * @property int|null $user_id
+ * @property string|null $type
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\User|null $user
@@ -147,12 +168,14 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|UserBlocks newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UserBlocks query()
  * @method static \Illuminate\Database\Eloquent\Builder|UserBlocks whereAttempts($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBlocks whereBlocked($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserBlocks whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserBlocks whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserBlocks whereIpAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserBlocks whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserBlocks whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserBlocks whereUserId($value)
  */
-	class UserLoginAttempt extends \Eloquent {}
+	class UserBlocks extends \Eloquent {}
 }
 
