@@ -2,7 +2,7 @@
 
 namespace App\Actions\User;
 
-use App\Http\Requests\User\PasswordResetStoreRequest;
+use App\Http\Requests\User\ForgotPasswordStoreRequest;
 use App\Models\User;
 use Lorisleiva\Actions\Concerns\AsAction;
 
@@ -10,7 +10,7 @@ class PasswordResetAction
 {
     use AsAction;
 
-    public function handle(PasswordResetStoreRequest $request): bool
+    public function handle(ForgotPasswordStoreRequest $request): bool
     {
         $email = $request->get('email');
 

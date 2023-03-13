@@ -45,7 +45,7 @@
 
             <div class="mt-4 text-center">
                 <!-- TODO: Setup redirect routes; -->
-                <a href="{{ route('password-reset.index') }}" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
+                <a href="{{ route('forgot-password.index') }}" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
             </div>
         </form>
     </div>

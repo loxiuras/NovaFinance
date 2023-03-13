@@ -2,7 +2,7 @@
 
 <div class="card-body pt-4">
     <div class="p-2">
-        <form class="form-horizontal" method="POST" action="{{ route('password-reset.store') }}">
+        <form class="form-horizontal" method="POST" action="{{ route('forgot-password.store') }}">
             @csrf
 
             <div class="mb-3">
