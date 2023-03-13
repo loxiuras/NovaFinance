@@ -2,13 +2,12 @@
 
 <div class="card-body pt-4">
     <div class="p-2">
-
         <form class="form-horizontal" method="POST" action="{{ route('login.store') }}">
             @csrf
 
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" required name="username" class="form-control @error('username') border-danger @enderror"id="username" placeholder="Enter username">
+                <input type="text" required name="username" class="form-control @error('username') border-danger @enderror" id="username" placeholder="Enter username">
 
                 @error('username')
                     <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -46,9 +45,8 @@
 
             <div class="mt-4 text-center">
                 <!-- TODO: Setup redirect routes; -->
-                <a href="auth-recoverpw.html" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
+                <a href="{{ route('password-reset.index') }}" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
             </div>
         </form>
-
     </div>
 </div>

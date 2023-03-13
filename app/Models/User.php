@@ -41,6 +41,11 @@ class User extends Authenticatable
         return $this->HasOne(Group::class);
     }
 
+    public function passwordReset(): HasOne
+    {
+        return $this->HasOne(PasswordReset::class, 'email', 'email');
+    }
+
     #### Attributes ####
     public function password(): Attribute
     {
