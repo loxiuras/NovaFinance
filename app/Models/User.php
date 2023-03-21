@@ -61,4 +61,21 @@ class User extends Authenticatable
 
         return !empty($loginAttempt) && $loginAttempt->blocked;
     }
+
+    public function fullName(): string
+    {
+        $collection = [];
+
+        if ($this->first_name) {
+            $collection[] = $this->first_name;
+        }
+        if ($this->middle_name) {
+            $collection[] = $this->middle_name;
+        }
+        if ($this->last_name) {
+            $collection[] = $this->last_name;
+        }
+
+        return implode(' ', $collection);
+    }
 }

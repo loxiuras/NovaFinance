@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\ForgotPasswordController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\PasswordResetController;
@@ -15,4 +16,5 @@ Route::middleware(['guest'])->group(function (): void {
 });
 
 route::middleware(['auth'])->group(function (): void {
+    Route::apiResource('dashboard', DashboardController::class)->only(['index']);
 });

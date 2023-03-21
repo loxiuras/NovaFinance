@@ -22,7 +22,7 @@ class LoginController extends Controller
     public function store(LoginStoreRequest $request)
     {
         if ((new UserBlocks())->hasBlockedLogin()) {
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         }
 
         $login = (new LoginAction())->make()->handle($request);
@@ -31,6 +31,6 @@ class LoginController extends Controller
             return back()->withErrors(['credentials' => __('auth.failed')]);
         }
 
-        // TODO: Redirect user to dashboard;
+        return redirect()->route('dashboard.index');
     }
 }
