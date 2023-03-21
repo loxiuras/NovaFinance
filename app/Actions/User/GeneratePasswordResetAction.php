@@ -6,7 +6,7 @@ use App\Http\Requests\User\ForgotPasswordStoreRequest;
 use App\Models\User;
 use Lorisleiva\Actions\Concerns\AsAction;
 
-class PasswordResetAction
+class GeneratePasswordResetAction
 {
     use AsAction;
 

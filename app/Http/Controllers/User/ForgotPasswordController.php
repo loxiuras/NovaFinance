@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Actions\User\PasswordResetAction;
+use App\Actions\User\GeneratePasswordResetAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\ForgotPasswordStoreRequest;
 use Illuminate\Contracts\Foundation\Application;
@@ -19,7 +19,7 @@ class ForgotPasswordController extends Controller
 
     public function store(ForgotPasswordStoreRequest $request): RedirectResponse
     {
-        (new PasswordResetAction())->make()->handle($request);
+        (new GeneratePasswordResetAction())->make()->handle($request);
 
         return back()->with(['message' => __('auth.password-reset')]);
     }
