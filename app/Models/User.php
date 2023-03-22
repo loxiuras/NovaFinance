@@ -79,8 +79,8 @@ class User extends Authenticatable
         return implode(' ', $collection);
     }
 
-    public function getAvatarUrl()
+    public function getAvatarUrl(): string
     {
-        return 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?s=50';
+        return 'https://www.gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?s=50';
     }
 }
