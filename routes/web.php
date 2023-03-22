@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\ForgotPasswordController;
 use App\Http\Controllers\User\LoginController;
+use App\Http\Controllers\User\LogoutController;
 use App\Http\Controllers\User\PasswordResetController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,5 @@ Route::middleware(['guest'])->group(function (): void {
 
 route::middleware(['auth'])->group(function (): void {
     Route::apiResource('dashboard', DashboardController::class)->only(['index']);
+    Route::apiResource('logout', LogoutController::class)->only(['store']);
 });

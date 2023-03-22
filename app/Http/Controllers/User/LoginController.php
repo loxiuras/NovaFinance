@@ -9,6 +9,7 @@ use App\Models\UserBlocks;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
@@ -19,7 +20,7 @@ class LoginController extends Controller
         return view('user.login.index.index', compact('loginIsBlocked'));
     }
 
-    public function store(LoginStoreRequest $request)
+    public function store(LoginStoreRequest $request): RedirectResponse
     {
         if ((new UserBlocks())->hasBlockedLogin()) {
             return redirect()->route('login.index');
